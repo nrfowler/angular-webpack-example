@@ -1,25 +1,17 @@
 'use strict'
 
-const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const devtool = 'cheap-module-eval-source-map'
-
-const devServer = {
-  hot: true,
-  inline: true
-}
+const devtool = 'eval-source-map'
 
 const entry = {
-  hot: 'webpack/hot/dev-server',
-  polyfills: './src/polyfills',
   vendors: './src/vendors',
-  main: './src/main'
+  main: ['babel-polyfill', './src/main']
 }
 
 const output = {
-  filename: '[name].js?[hash]', // `?[hash]` ensures browser does not cache compilations
+  filename: '[name].js',
   path: './dist'
 }
 
@@ -58,15 +50,14 @@ const loaders = [{
 const plugins = [
   new ExtractTextPlugin('[name].css'),
   new HtmlWebpackPlugin({
+    hash: true,
     template: './static/index.html',
     inject: 'head'
-  }),
-  new webpack.HotModuleReplacementPlugin()
+  })
 ]
 
 module.exports = {
   devtool,
-  devServer,
   entry,
   output,
   resolve: {
