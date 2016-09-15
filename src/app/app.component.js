@@ -6,9 +6,16 @@ export default {
   controller:
     /* @ngInject */
     class AppController {
-      constructor ($log) {
-        $log.debug('AppController instantiated')
-        this.message = '2'
+      constructor ($log, $http) {
+        $log.debug('AppController instantiated');
+        var ctrl=this;
+        this.message = '2';
+        var url = 'http://localhost:1234/people/';
+      	this.getAllUsers = function() { return $http.get(url) };
+        this.getAllUsers().success(function(data){
+          ctrl.users=data;
+          console.log(data);
+        });
       }
     }
 }
