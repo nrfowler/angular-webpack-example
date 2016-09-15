@@ -24,7 +24,7 @@ const extensions = [
 
 const loaders = [{
   test: /.js$/,
-  exclude: /node_modules/,
+  exclude: [/node_modules/,/static/],
   loaders: ['ng-annotate', 'babel']
 }, {
   test: /.css$/,

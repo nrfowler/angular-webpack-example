@@ -1,13 +1,13 @@
-import templateUrl from './app.component.html'
+import templateUrl from './user.component.html'
 
 export default {
   templateUrl,
-  controllerAs: '$app',
+  controllerAs: '$user',
   controller:
     /* @ngInject */
-    class AppController {
+    class UserController {
       constructor ($log, $http) {
-        $log.debug('AppController instantiated');
+        $log.debug('UserController instantiated');
         var ctrl=this;
         this.message = '2';
         var url = 'http://localhost:1234/people/';
