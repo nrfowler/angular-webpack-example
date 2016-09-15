@@ -8,7 +8,7 @@ export default {
     class AppController {
       constructor ($log) {
         $log.debug('AppController instantiated')
-        this.message = 'booooo'
+        this.message = '2'
       }
     }
 }
