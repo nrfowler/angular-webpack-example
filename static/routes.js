@@ -7,28 +7,17 @@ angular.
       $routeProvider.
       	when('/home', {
 
-          templateUrl: './user/userTemplate.html',
-          controller: 'HomeController',
-          controllerAs: 'homeController'
+          template: '<users-app></users-app>'
 
         }).
       	when('/user', {
 
-          templateUrl: 'http://localhost:8080/#/' + 'user/userTemplate.html',
-          controller: 'UserController',
-          controllerAs: 'userController',
-          resolve: {
-              allUsers: function(UserService){
-	                  return UserService.getAllUsers();
-	          }
-          }
+          template: '<p>hi</hi>'
 
         }).
-        when('/#user/:id', {
+        when('/user/:id', {
 
-        	templateUrl: './user/userTemplate.html',
-        	controller: 'UserDetailController',
-        	controllerAs: 'userDetailController'
+        	template: '<user-app></user-app>'
         }).
         otherwise('/home');
     }

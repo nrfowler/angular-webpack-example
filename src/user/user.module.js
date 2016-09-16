@@ -1,7 +1,7 @@
-import webApp from './user.component'
+import userApp from './user.component'
 
 export default
   angular
     .module('webpack-app', ['ngRoute'])
-    .component('webApp', webApp)
+    .component('userApp', userApp)
     .name

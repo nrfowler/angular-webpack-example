@@ -1,4 +1,4 @@
-import templateUrl from './user.component.html'
+import templateUrl from './userDetailTemplate.html'
 
 export default {
   templateUrl,
@@ -6,16 +6,18 @@ export default {
   controller:
     /* @ngInject */
     class UserController {
-      constructor ($log, $http) {
+      constructor ($log, $http, $routeParams) {
         $log.debug('UserController instantiated');
         var ctrl=this;
-        this.message = '2';
-        var url = 'http://localhost:1234/people/';
-      	this.getAllUsers = function() { return $http.get(url) };
-        this.getAllUsers().success(function(data){
-          ctrl.users=data;
+        console.log('user.component is running')
+        var url = 'http://localhost:1234/people/'+$routeParams.id;
+      	this.getUser = function() { return $http.get(url) };
+        this.getUser().success(function(data){
+          ctrl.user=data;
           console.log(data);
         });
       }
+
+
     }
 }
